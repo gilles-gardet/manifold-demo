@@ -33,6 +33,7 @@ class ManifoldDemoApplicationTests {
 		Assertions.assertEquals(55, secondPerson.age);
 		Assertions.assertEquals("Georges", secondPerson.lastName);
 	}
+
 	@Test
 	void tuples() {
 		final var person = new Person("Gilles", "Gardet", 39);
@@ -40,5 +41,12 @@ class ManifoldDemoApplicationTests {
 		Assertions.assertEquals("Gilles", tuple.firstName);
 		Assertions.assertEquals("Gardet", tuple.lastName);
 		Assertions.assertEquals(39, tuple.age);
+	}
+
+	@Test
+	void stringTemplate() {
+		final var person = new Person("Gilles", "Gardet", 39);
+		final var text = "${person.firstName} ${person.lastName} is ${person.age} years old.";
+		Assertions.assertEquals("Gilles Gardet is 39 years old.", text);
 	}
 }
