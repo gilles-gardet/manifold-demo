@@ -1,5 +1,6 @@
 package com.ggardet.manifold_demo;
 
+import manifold.ext.rt.api.auto;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -31,5 +32,13 @@ class ManifoldDemoApplicationTests {
 		final var secondPerson = new Person(age: 55, lastName: "Georges");
 		Assertions.assertEquals(55, secondPerson.age);
 		Assertions.assertEquals("Georges", secondPerson.lastName);
+	}
+	@Test
+	void tuples() {
+		final var person = new Person("Gilles", "Gardet", 39);
+		auto tuple = (person.firstName, lastName: "Gardet", age: person.age);
+		Assertions.assertEquals("Gilles", tuple.firstName);
+		Assertions.assertEquals("Gardet", tuple.lastName);
+		Assertions.assertEquals(39, tuple.age);
 	}
 }
